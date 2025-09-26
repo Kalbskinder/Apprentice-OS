@@ -1,4 +1,4 @@
-# Kalbs-OS
+# Apprentice-OS
 
 ## Stuff I wanna add:
 - Boot Screen (maybe BIOS too)
