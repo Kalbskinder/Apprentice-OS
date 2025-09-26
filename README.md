@@ -1,11 +1,13 @@
 # Apprentice-OS
 
-State Management:
+## State Management:
 Let's say im logged in and i reload the page, i don't wanna see the boot menu again, i should either be back in the system or on the lock screen
 So add state management to make it easier for users to navigate
 
-Window Focus:
+## Window Focus:
 Focusing windows and layering with z-index. The focused window should allways be in front of other windows but there's still stuff that can be higher than the windows, like overlays, popups, taskbar
+Idea:
+- Make an array with all opened windows, the z-index is allways the order in the array reversed + 100. So if the Settings is at 0 and the last app is at 10, the settings would have a z-index of 110 and the last app would be at z-index 100
 
 ## Stuff I wanna add:
 - Boot Screen (maybe BIOS too)
