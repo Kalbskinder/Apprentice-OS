@@ -17,6 +17,7 @@ Idea:
 - Software Store
   - Text Editor
   - Some Games
+  - Minecraft Skin viewer using [skinview3d](https://skinview3d-demo.vercel.app/)
   - Custom Cursors app to change your cursor
 - File management system. Users can create/edit/delete files and folders.
 - Settings to change appearence and to more stuff (Change Font, window border radius, change wallpaper, timezone)
