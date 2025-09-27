@@ -13,5 +13,5 @@ export const messages = [
   "Launching window manager...",
   "Establishing secure session...",
   "Finalizing boot sequence...",
-  "System ready. Welcome!"
+  "Starting desktop environment...",
 ]
