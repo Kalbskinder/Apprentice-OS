@@ -1,0 +1,21 @@
+.boot-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(8, 8, 8);
+    white-space: pre;
+    padding: 20px;
+    font-size: 14px;
+    color: white;
+}
+
+.boot-header {
+    margin-bottom: 30px;
+}
+
+.info-line {
+    margin-top: 12px;
+}
+
+.green-ok {
+    color: #10df10;
+}
