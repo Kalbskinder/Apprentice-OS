@@ -22,3 +22,4 @@ Idea:
 - File management system. Users can create/edit/delete files and folders.
 - Settings to change appearence and to more stuff (Change Font, window border radius, change wallpaper, timezone)
 - Task Manager with stats, running systems and stuff
+- Add default apps like a Calculator and Music Player aswell as media player and more default apps
