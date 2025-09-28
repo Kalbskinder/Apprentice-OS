@@ -42,6 +42,8 @@ Version 0.1.0
     if (bootState === "loading") {
       const timeout = setTimeout(() => {
         setBootState("done")
+        localStorage.setItem("state", "lock-screen")
+        window.location.reload()
       }, 4000);
       return () => clearTimeout(timeout);
     }
@@ -62,8 +64,6 @@ Version 0.1.0
             <h1>Apprentice OS</h1>
           </div>
         </div>
-      ): bootState === "done" ? (
-        <div>Continuing...</div>
       ) : ( null )
       }
 
