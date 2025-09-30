@@ -21,8 +21,6 @@ export default function LockScreen() {
     const [date, setDate] = useState(() => formatDate(new Date()));
 
     const triggerFormError = (error: string, type: string) => {
-        console.log(state)
-        console.log(error)
         switch (type) {
             case "username":
                 setUsernameError(error)
@@ -59,6 +57,12 @@ export default function LockScreen() {
                 const lockScreen = document.querySelector(".lock-screen") as HTMLElement | null;
                 const lockScreenBg = document.querySelector(".lock-screen-bg") as HTMLElement | null;
                 const loginForm = document.querySelector(".lock-screen-login-container") as HTMLElement | null;
+
+                // Reset error messages
+                document.getElementById("username-error")?.classList.add("hidden");
+                document.getElementById("password-error")?.classList.add("hidden");
+                document.getElementById("confirm-password-error")?.classList.add("hidden");
+
 
                 if (lockScreen && lockScreenBg && loginForm) {
                     loginForm.classList.remove("hidden");
