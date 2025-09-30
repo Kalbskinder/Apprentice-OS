@@ -1,7 +1,5 @@
 "use client"
 
-import Image from "next/image";
-import styles from "./page.module.css";
 import BootScreen from "./components/BootScreen/BootScreen";
 import { useEffect, useState } from "react";
 import LockScreen from "./components/LockScreen/LockScreen";

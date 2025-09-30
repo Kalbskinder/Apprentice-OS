@@ -4,3 +4,18 @@ body {
   box-sizing: border-box;
   overflow: hidden;
 }
+
+.hidden {
+  display: none !important;
+}
+
+.error {
+  color: red;
+}
+
+.align-left {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}

@@ -6,6 +6,7 @@
     height: 100vh;
     background-size: cover;
     background-image: url("/backgrounds/background.png");
+    background-color: black;
     position: fixed;
     inset: 0;
     z-index: -1;
@@ -14,6 +15,7 @@
 
 .lock-screen {
     display: flex;
+    font-family: "Bowlby One", sans-serif;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -25,7 +27,6 @@
 }
 
 .lock-clock {
-    font-family: "Bowlby One", sans-serif;
     font-weight: 600;
     font-style: normal;
     display: flex;
@@ -48,7 +49,6 @@
 }
 
 .input-prompt {
-    font-family: 'Bowlby One', sans-serif;
     color: white;
     margin-top: 35px;
     animation: float 2s ease-in-out infinite;
@@ -64,4 +64,86 @@
     100% {
         transform: translatey(0px);
     }
+}
+
+/* Container */
+.lock-screen-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  backdrop-filter: blur(20px);
+}
+
+/* Login Box */
+.lock-screen-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 30px 32px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  text-align: center;
+}
+
+/* Überschrift */
+.lock-screen-login h1 {
+    margin: 0;
+  font-family: "Bowlby One", sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+/* Input Felder */
+.lock-screen-login input {
+  font-size: 15px;
+  padding: 10px 14px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.lock-screen-login input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.lock-screen-login input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6);
+}
+
+/* Fehlertext */
+.error {
+  font-size: 13px;
+  color: #ff5555;
+  margin-top: -6px;
+  align-self: flex-start;
+}
+
+.login-btn:active {
+  transform: scale(0.98);
+}
+
+/* Link */
+.no-acc {
+  margin-top: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.no-acc:hover {
+  color: #fff;
 }
