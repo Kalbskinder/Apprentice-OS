@@ -124,7 +124,8 @@
 
 /* Fehlertext */
 .error {
-  font-size: 13px;
+  font-size: 14px;
+  font-family: "Bowlby One", sans-serif;
   color: #ff5555;
   margin-top: -6px;
   align-self: flex-start;
@@ -136,12 +137,14 @@
 
 /* Link */
 .no-acc {
+  font-family: "Bowlby One", sans-serif;
   margin-top: 8px;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s;
+  text-decoration: underline;
 }
 
 .no-acc:hover {

@@ -20,12 +20,25 @@ export default function LockScreen() {
     const [time, setTime] = useState(() => new Date().toLocaleTimeString());
     const [date, setDate] = useState(() => formatDate(new Date()));
 
+    const triggerFormError = (error: string, type: string) => {
+        console.log(state)
+        console.log(error)
+        switch (type) {
+            case "username":
+                setUsernameError(error)
+                document.getElementById("username-error")?.classList.remove("hidden");
+                break;
+            case "password":
+                setPasswordError(error)
+                document.getElementById("password-error")?.classList.remove("hidden");
+                document.getElementById("confirm-password-error")?.classList.remove("hidden");
+                break;
+        }
+    }
+
     const toggleForm = () => {
         const loginForm = document.querySelector(".login-form") as HTMLElement | null;
         const signUpForm = document.querySelector(".signup-form") as HTMLElement | null;
-
-        console.log("Triggered")
-
         loginForm?.classList.toggle("hidden");
         signUpForm?.classList.toggle("hidden");
 
@@ -33,6 +46,8 @@ export default function LockScreen() {
             setState("sign-up")
         } else {
             setState("login")
+            if (usernameError == "") setUsernameError("Username is required")
+            if (passwordError == "") setPasswordError("Password is required")
         }
 
     }
@@ -92,11 +107,27 @@ export default function LockScreen() {
 
                 }
             }
+            if (event.key === "Enter") {
+                if (state === "login") {
+                    if (username === "") triggerFormError("Username is required", "username");
+                    if (password === "") triggerFormError("Password is required", "password");
+
+                    // TODO: Make api request to backend
+                }
+                if (state === "sign-up") {
+                    if (username === "") triggerFormError("Username is required", "username");
+                    if (password === "") triggerFormError("Password is required", "password");
+                    if (password !== confirmPassword) triggerFormError("Passwords do not match", "password");
+                    if (password.length < 8) triggerFormError("Password must be at least 8 characters", "password");
+
+                    // TODO: Make api request to backend
+                }
+            }
         };
 
         document.addEventListener("keydown", handleKeyDown);
         return () => document.removeEventListener("keydown", handleKeyDown);
-    }, [state]);
+    }, [state, password, confirmPassword, username]);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -125,7 +156,7 @@ export default function LockScreen() {
                         onChange={(e) => setUsername(e.target.value)}
                         value={username}
                     />
-                    <div className="hidden error">{usernameError}</div>
+                    <div className="hidden error" id="username-error">{usernameError}</div>
 
                     <input
                         type="password"
@@ -133,7 +164,7 @@ export default function LockScreen() {
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                     />
-                    <div className="hidden error">{passwordError}</div>
+                    <div className="hidden error" id="password-error">{passwordError}</div>
 
                     <div className="align-left">
                         <a className="no-acc" onClick={toggleForm}>Don't have an account?</a>
@@ -147,7 +178,7 @@ export default function LockScreen() {
                         onChange={(e) => setUsername(e.target.value)}
                         value={username}
                     />
-                    <div className="hidden error">{usernameError}</div>
+                    <div className="hidden error" id="username-error">{usernameError}</div>
 
                     <input
                         type="password"
@@ -155,7 +186,7 @@ export default function LockScreen() {
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                     />
-                    <div className="hidden error">{passwordError}</div>
+                    <div className="hidden error" id="password-error">{passwordError}</div>
 
                     <input
                         type="password"
@@ -163,7 +194,7 @@ export default function LockScreen() {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         value={confirmPassword}
                     />
-                    <div className="hidden error">{passwordError}</div>
+                    <div className="hidden error" id="confirm-password-error">{passwordError}</div>
                     
                     <div className="align-left">
                         <a className="no-acc" onClick={toggleForm}>Already have an account?</a>
