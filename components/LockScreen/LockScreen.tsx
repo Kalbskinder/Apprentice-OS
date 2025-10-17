@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
+// @ts-ignore
 import "./LockScreen.css"
 
 export default function LockScreen() {

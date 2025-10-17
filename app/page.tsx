@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import BootScreen from "./components/BootScreen/BootScreen";
+import BootScreen from "../components/BootScreen/BootScreen";
 import { useEffect, useState } from "react";
-import LockScreen from "./components/LockScreen/LockScreen";
+import LockScreen from "../components/LockScreen/LockScreen";
 
 /*
 States for localStorage:

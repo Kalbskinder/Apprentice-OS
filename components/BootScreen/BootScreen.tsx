@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { messages } from "../../../../lib/bootMessages"
+import { messages } from "../../lib/bootMessages"
+// @ts-ignore
 import "./BootScreen.css"
 
 export default function BootScreen() {
