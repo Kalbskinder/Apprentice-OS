@@ -1,8 +1,8 @@
 "use client"
 
-import BootScreen from "../components/BootScreen/BootScreen";
+import BootScreen from "../components/pages/BootScreen/BootScreen";
 import { useEffect, useState } from "react";
-import LockScreen from "../components/LockScreen/LockScreen";
+import LockScreen from "../components/pages/LockScreen/LockScreen";
 
 /*
 States for localStorage:

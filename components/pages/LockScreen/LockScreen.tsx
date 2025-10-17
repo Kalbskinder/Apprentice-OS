@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 // @ts-ignore
 import "./LockScreen.css"
+import { Logger } from "@/lib/utils/Logger";
 
 export default function LockScreen() {
     const [usernameError, setUsernameError] = useState("");
@@ -49,6 +50,67 @@ export default function LockScreen() {
             if (passwordError == "") setPasswordError("Password is required")
         }
 
+    }
+
+    const handleLogin = async () => {
+        // reset visible error elements
+        document.getElementById("username-error")?.classList.add("hidden");
+        document.getElementById("password-error")?.classList.add("hidden");
+        try {
+            const res = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({ error: "Invalid credentials" }));
+                // show a password error by default for invalid credentials
+                triggerFormError(data.error || "Invalid credentials", "password");
+                return;
+            }
+        } catch (err) {
+            triggerFormError("Network error", "password");
+        }
+    }
+
+    const handleRegister = async () => {
+        // reset visible error elements
+        document.getElementById("username-error")?.classList.add("hidden");
+        document.getElementById("password-error")?.classList.add("hidden");
+        document.getElementById("confirm-password-error")?.classList.add("hidden");
+
+        try {
+            const res = await fetch("/api/auth/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({ error: "Registration failed" }));
+                // if user exists, show username error, otherwise show password
+                if (data.error && /exists/i.test(data.error)) {
+                    triggerFormError(data.error, "username");
+                } else {
+                    triggerFormError(data.error || "Registration failed", "password");
+                }
+                return;
+            }
+
+            // registration success -> switch to login form, clear passwords
+            const loginForm = document.querySelector(".login-form") as HTMLElement | null;
+            const signUpForm = document.querySelector(".signup-form") as HTMLElement | null;
+            signUpForm?.classList.add("hidden");
+            loginForm?.classList.remove("hidden");
+            setState("login");
+            setPassword("");
+            setConfirmPassword("");
+            setPasswordError("");
+            setUsernameError("");
+        } catch (err) {
+            triggerFormError("Network error", "password");
+        }
     }
 
     useEffect(() => {
@@ -117,7 +179,10 @@ export default function LockScreen() {
                     if (username === "") triggerFormError("Username is required", "username");
                     if (password === "") triggerFormError("Password is required", "password");
 
-                    // TODO: Make api request to backend
+                    if (username !== "" && password !== "") {
+                        // perform login
+                        void handleLogin();
+                    }
                 }
                 if (state === "sign-up") {
                     if (username === "") triggerFormError("Username is required", "username");
@@ -125,7 +190,10 @@ export default function LockScreen() {
                     if (password !== confirmPassword) triggerFormError("Passwords do not match", "password");
                     if (password.length < 8) triggerFormError("Password must be at least 8 characters", "password");
 
-                    // TODO: Make api request to backend
+                    if (username !== "" && password !== "" && password === confirmPassword && password.length >= 8) {
+                        // perform register
+                        void handleRegister();
+                    }
                 }
             }
         };
