@@ -14,6 +14,7 @@ Idea:
 - Lock Screen with current time display with your current timezone, login forum and an option to create an account. Every account is saved in a database and stuff the user does gets stored for each user and displayed dinamicly
 - Taskbar and AppMenu
 - Window Manager
+- Camera App
 - Software Store
   - Text Editor
   - Some Games
