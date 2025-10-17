@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { messages } from "../../lib/bootMessages"
+import { useEffect, useState } from "react";
+import { messages } from "../../lib/bootMessages";
 // @ts-ignore
-import "./BootScreen.css"
+import "./BootScreen.css";
 
 export default function BootScreen() {
-  const [lines, setLines] = useState<string[]>([])
-  const [infoLine, setInfoLine] = useState<string[]>([])
-  const [bootState, setBootState] = useState<string>("")
+  const [lines, setLines] = useState<string[]>([]);
+  const [infoLine, setInfoLine] = useState<string[]>([]);
+  const [bootState, setBootState] = useState<string>("");
 
   useEffect(() => {
-    setBootState("booting")
+    setBootState("booting");
     const bootHeader = `
     _                               _   _             ___  ____  
    / \\   _ __  _ __  _ __ ___ _ __ | |_(_) ___ ___   / _ \\/ ___| 
@@ -21,30 +21,30 @@ export default function BootScreen() {
         |_|   |_|     
 
 Version 0.1.0
-`
-    setLines([bootHeader])
+`;
+    setLines([bootHeader]);
 
     messages.forEach((msg, i) => {
-        setTimeout(() => {
-            setInfoLine(prev => {
-            const updated = [...prev, msg]
-            setTimeout(() => {
-                if (updated.length === messages.length) {
-                setBootState("loading")
-            }}, 500)
-            return updated
-        })
-      }, Math.random() * 1000)
-    })
-
-  }, [])
+      setTimeout(() => {
+        setInfoLine((prev) => {
+          const updated = [...prev, msg];
+          setTimeout(() => {
+            if (updated.length === messages.length) {
+              setBootState("loading");
+            }
+          }, 500);
+          return updated;
+        });
+      }, Math.random() * 1000);
+    });
+  }, []);
 
   useEffect(() => {
     if (bootState === "loading") {
       const timeout = setTimeout(() => {
-        setBootState("done")
-        localStorage.setItem("state", "lock-screen")
-        window.location.reload()
+        setBootState("done");
+        localStorage.setItem("state", "lock-screen");
+        window.location.reload();
       }, 4000);
       return () => clearTimeout(timeout);
     }
@@ -52,22 +52,22 @@ Version 0.1.0
 
   return (
     <div className="boot-screen">
-      { bootState === "booting" ? (
+      {bootState === "booting" ? (
         <pre>
-            <div className="boot-header">{lines}</div>
-            {infoLine.map((line, index) => (
-            <div className="info-line" key={index}>[<span className="green-ok"> OK </span>] {line}</div>
-            ))}
+          <div className="boot-header">{lines}</div>
+          {infoLine.map((line, index) => (
+            <div className="info-line" key={index}>
+              [<span className="green-ok"> OK </span>] {line}
+            </div>
+          ))}
         </pre>
-      ): bootState === "loading" ? (
+      ) : bootState === "loading" ? (
         <div className="boot-loading-container">
           <div className="boot-loading-content">
             <h1>Apprentice OS</h1>
           </div>
         </div>
-      ) : ( null )
-      }
-
+      ) : null}
     </div>
-  )
+  );
 }
