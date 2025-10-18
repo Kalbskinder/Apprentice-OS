@@ -3,6 +3,7 @@
 import BootScreen from "../components/pages/BootScreen/BootScreen";
 import { useEffect, useState } from "react";
 import LockScreen from "../components/pages/LockScreen/LockScreen";
+import Desktop from "@/components/pages/Desktop/Desktop";
 
 /*
 States for localStorage:
@@ -25,6 +26,8 @@ export default function Home() {
         <BootScreen />
       ) : globalState === "lock-screen" ? (
         <LockScreen />
+      ) : globalState === "desktop" ? (
+        <Desktop />
       ) : (
         <BootScreen />
       )}

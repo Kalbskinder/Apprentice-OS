@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Figtree:ital,wght@0,300..900;1,300..900&family=Krona+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bowlby+One&family=Figtree:ital,wght@0,300..900;1,300..900&family=Krona+One&display=swap');
+
+.desktop {
+    font-family: "Bowlby One", sans-serif;
+    color: white;
+    width: 100vw;
+    height: 100vh;
+}
+
+.desktop-bg {
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-image: url("/assets/backgrounds/background.png");
+    background-color: black;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}

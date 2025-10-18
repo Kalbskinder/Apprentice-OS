@@ -69,6 +69,9 @@ export default function LockScreen() {
                 triggerFormError(data.error || "Invalid credentials", "password");
                 return;
             }
+            // login success -> redirect to desktop
+            localStorage.setItem("state", "desktop");
+            window.location.reload();
         } catch (err) {
             triggerFormError("Network error", "password");
         }
