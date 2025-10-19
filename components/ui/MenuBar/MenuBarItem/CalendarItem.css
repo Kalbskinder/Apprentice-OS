@@ -40,6 +40,28 @@
   margin-bottom: 5px;
 }
 
+.calendar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ccc;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.calendar-nav button {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.calendar-nav button:hover {
+  color: #fff;
+}
+
 .calendar-grid {
   text-align: center;
   font-size: 0.9rem;
