@@ -23,6 +23,12 @@
   gap: 8px;
 }
 
+.menu-bar .center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 /* --- MENU ITEMS --- */
 .menu-bar-item {
   position: relative;
