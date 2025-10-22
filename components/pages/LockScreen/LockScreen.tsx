@@ -19,7 +19,7 @@ export default function LockScreen() {
         return `${day}. ${monthYear}`;
     };
 
-    const [time, setTime] = useState(() => new Date().toLocaleTimeString());
+    const [time, setTime] = useState(() => new Date().toLocaleTimeString('en-GB', { hour12: false }));
     const [date, setDate] = useState(() => formatDate(new Date()));
 
     const triggerFormError = (error: string, type: string) => {
@@ -208,7 +208,7 @@ export default function LockScreen() {
     useEffect(() => {
         const timer = setInterval(() => {
             const now = new Date();
-            setTime(now.toLocaleTimeString());
+            setTime(now.toLocaleTimeString('en-GB', { hour12: false }));
             setDate(formatDate(now));
         }, 1000);
         return () => clearInterval(timer);
