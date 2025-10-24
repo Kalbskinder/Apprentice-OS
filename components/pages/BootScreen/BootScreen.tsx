@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { messages } from "../../../lib/bootMessages";
+import { setState } from "../../../lib/stateManagement";
 // @ts-ignore
 import "./BootScreen.css";
 
@@ -43,8 +44,7 @@ Version 0.1.0
     if (bootState === "loading") {
       const timeout = setTimeout(() => {
         setBootState("done");
-        localStorage.setItem("state", "lock-screen");
-        window.location.reload();
+        setState("lock-screen");
       }, 4000);
       return () => clearTimeout(timeout);
     }

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 // @ts-ignore
 import "./LockScreen.css"
-import { Logger } from "@/lib/utils/Logger";
+import { setState as setGlobalState } from "@/lib/stateManagement";
 
 export default function LockScreen() {
     const [usernameError, setUsernameError] = useState("");
@@ -70,8 +70,7 @@ export default function LockScreen() {
                 return;
             }
             // login success -> redirect to desktop
-            localStorage.setItem("state", "desktop");
-            window.location.reload();
+            setGlobalState("desktop");
         } catch (err) {
             triggerFormError("Network error", "password");
         }
